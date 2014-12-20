@@ -7,5 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 2.times do Product.create(name: 'Random Product', 
-                          description: 'This is the best product ever omglolrofl!!!')
+                          description: 'This is the best product ever omglolrofl!!!',
+                          users_id: 1)
 end
