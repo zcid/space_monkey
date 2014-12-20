@@ -39,13 +39,21 @@ class ProductsController < ApplicationController
 
   def vote_up
     product = Product.find(params[:product])
-    product.scores.create(user_id: current_user.id, user_score: 1)
+    if never_voted?(product)
+      product.scores.create(user_id: current_user.id, user_score: 1)
+    else
+      flash[:alert] = "You have already voted on this product!"
+    end
     redirect_to root_path
   end
 
   def vote_down
     product = Product.find(params[:product])
-    product.scores.create(user_id: current_user.id, user_score: (-1))
+    if never_voted?(product)
+      product.scores.create(user_id: current_user.id, user_score: (-1))
+    else
+      flash[:alert] = "You have already voted on this product!"
+    end
     redirect_to root_path
   end
 
@@ -64,5 +72,13 @@ class ProductsController < ApplicationController
         x += score.user_score
       end
       return x
+    end
+
+    def never_voted?(product)
+      if Score.where(user_id: current_user.id, product_id: product).count == 0
+        true
+      else
+        false
+      end
     end
 end
