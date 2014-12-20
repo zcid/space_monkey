@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(project_params)
+    @product = Product.new(product_params)
     if @product.save
       redirect_to @product
     else
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update_attributes(project_params)
+    if @product.update_attributes(product_params)
       redirect_to @product
     else
       render :edit
@@ -36,12 +36,17 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to products_path
   end
-  def get_score(product)
-    x = 0
-    product.scores.each do |score|
-      x += score.user_score
-    end
-    return x
+
+  def vote_up
+    product = Product.find(params[:product])
+    product.scores.create(user_id: current_user.id, user_score: 1)
+    redirect_to root_path
+  end
+
+  def vote_down
+    product = Product.find(params[:product])
+    product.scores.create(user_id: current_user.id, user_score: (-1))
+    redirect_to root_path
   end
 
   private 

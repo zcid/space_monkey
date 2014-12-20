@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  get '/vote_up', to:'products#vote_up', as: :vote_up
+  get '/vote_down', to:'products#vote_down', as: :vote_down
+
   get '/profile', to: 'users#profile', as: :profile
 
   # The priority is based upon order of creation: first created -> highest priority.
