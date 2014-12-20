@@ -1,7 +1,5 @@
-show
+<h1><%= @product.name %></h1>
+<p><%= @product.description %></p>
 
+<p><%= link_to 'back', products_path %></p>
 
-<ol><li><%= @product.name %></li>
-<%= @product.description %></ol>
-
-<%= link_to 'back', products_path %>

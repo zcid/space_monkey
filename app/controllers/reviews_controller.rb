@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :set_product
+  before_action :set_review
 
   def index
   	@reviews = Review.all
@@ -37,8 +39,13 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
+
     def set_review
-    	@review = Review.find(params[:index])
+    	@review = Review.find(params[:id])
   end
 
 
