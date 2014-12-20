@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+2.times do Product.create(name: 'Random Product', 
+                          description: 'This is the best product ever omglolrofl!!!')
+end
