@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(project_params)
+    @product = Product.new(product_params)
     if @product.save
       redirect_to @product
     else
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update_attributes(project_params)
+    if @product.update_attributes(product_params)
       redirect_to @product
     else
       render :edit
