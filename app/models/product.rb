@@ -2,9 +2,9 @@ class Product < ActiveRecord::Base
   has_many :reviews
   has_many :scores
 
-  def get_score(product)
+  def get_score
     x = 0
-    product.scores.each do |score|
+    self.scores.each do |score|
       x += score.user_score
     end 
     return x
