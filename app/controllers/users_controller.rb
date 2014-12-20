@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def profile
+    @user = current_user
+  end
+
   private
     def set_user
       params.require(:user).permit(:username)
