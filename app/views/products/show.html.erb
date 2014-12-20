@@ -3,3 +3,7 @@
 
 <p><%= link_to 'back', products_path %></p>
 
+<% @product.reviews.each do |review| %>
+  <%= review.title %>
+  <%= review.description %>
+<% end %>
