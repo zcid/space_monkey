@@ -13,7 +13,7 @@
         <div><%= link_to '#', class: "btn btn-default" do %>
           <i class="glyphicon glyphicon-thumbs-up"></i>
         <% end %>
-        Score: <%= get_score(product) %>
+        Score: <%= product.get_score %>
         Name: <%= product.name %>  
                   <%= link_to 'view', product_path(product) %>  
                   <% if current_user.id == product.users_id %>

@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :show, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.all.sort { |x,y| y.get_score <=> x.get_score }
   end
 
   def show
