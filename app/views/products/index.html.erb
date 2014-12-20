@@ -1,50 +1,35 @@
 <div class= "pager container-fluid">
-	<h1>Index of Products</h1>
-	<p>Space Monkey demands you add a new product</p>
-	<div class="row">
-		<div class="col-md-2 col-md-offset-5">
-		<%= link_to 'here', new_product_path, class: "btn btn-primary btn-lg btn-block" %>
-		</div>
-	</div>
+  <h1>Index of Products</h1>
+  <p>Space Monkey demands you add a new product</p>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5">
+    <%= link_to 'here', new_product_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
 
-	<div class="container-fluid">
-		<div><% @products.each do |product| %>
-			<div class="pager border_pager">
-				<div><%= link_to '#', class: "btn btn-default" do %>
-		    	<i class="glyphicon glyphicon-thumbs-up"></i>
-				<% end %>
-				Name: <%= product.name %>  
-									<%= link_to 'view', product_path(product) %>  
-									<%= link_to 'edit', edit_product_path(product) %> 
-									<%= link_to 'delete', product_path(product), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>  
-									<%= link_to '#', class: "btn btn-default" do %>
-							    	<i class="glyphicon glyphicon-thumbs-up"></i>
-									<% end %>
-									<%= link_to '#', class: "btn btn-default" do %>
-										<i class="glyphicon glyphicon-thumbs-down"></i>
-									<% end %>
-				</div>
-				<div>
-					<div class="description_padding">Description: <%= product.description %></div>
-			</div>
-				</div>
-			<% end %>
-      Score: <%= product.get_score(product) %>
-			Name: <%= product.name %>  
-								<%= link_to 'view', product_path(product) %>  
-								<%= link_to 'edit', edit_product_path(product) %> 
-								<%= link_to 'delete', product_path(product), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>  
-								<%= link_to '#', class: "btn btn-default" do %>
-						    	<i class="glyphicon glyphicon-thumbs-up"></i>
-								<% end %>
-								<%= link_to '#', class: "btn btn-default" do %>
-									<i class="glyphicon glyphicon-thumbs-down"></i>
-								<% end %>
-			</li>
-			<ul>
-				<li>Description: <%= product.description %></li>
-		</div>
-			</ul>
-		<% end %>
-	</ol>
+  <div class="container-fluid">
+    <div><% @products.each do |product| %>
+      <div class="pager border_pager">
+        <div><%= link_to '#', class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+        <% end %>
+        Score: <%= get_score(product) %>
+        Name: <%= product.name %>  
+                  <%= link_to 'view', product_path(product) %>  
+                  <%= link_to 'edit', edit_product_path(product) %> 
+                  <%= link_to 'delete', product_path(product), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>  
+                  <%= link_to '#', class: "btn btn-default" do %>
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                  <% end %>
+                  <%= link_to '#', class: "btn btn-default" do %>
+                    <i class="glyphicon glyphicon-thumbs-down"></i>
+                  <% end %>
+        </div>
+        <div>
+          <div class="description_padding">Description: <%= product.description %></div>
+      </div>
+        </div>
+      <% end %>
+    <div>
+  </div>
 </div>
