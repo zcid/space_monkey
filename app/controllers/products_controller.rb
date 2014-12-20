@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-    def project_params
+    def product_params
       params.require(:product).permit(:name, :description)
     end
 

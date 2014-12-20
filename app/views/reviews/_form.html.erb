@@ -1,12 +1,8 @@
-<%= bootstrap_form_for [@task] do |f| %>
+<%= bootstrap_form_for [@product, @review] do |f| %>
 
   <%= f.text_field :title %>
 
   <%= f.text_area :description %>
-
-  <%= f.date_field :product %>
-
-  <%= f.check_box :user %>
 
 	<%= f.submit %>
 <% end %>

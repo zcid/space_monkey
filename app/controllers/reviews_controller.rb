@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :set_product, only: [:new, :update, :create, :destroy, :edit]
+  before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new]
 
   def index
   	@reviews = Review.all
@@ -11,13 +14,13 @@ class ReviewsController < ApplicationController
   end
 
   def new
-  	@review = Review.new
+  	@review = @product.reviews.build
   end
 
   def create
-  	@review = Review.new(review_params)
+  	@review = @product.reviews.build(review_params)
   	if @review.save
-  		redirect_to @review
+  		redirect_to @product
   	else
   		render :new
   	end
@@ -25,7 +28,7 @@ class ReviewsController < ApplicationController
 
   def update
   	if @review.update_attributes(review_params)
-  		redirect_to @review
+  		redirect_to @product
   	else
   		render :edit
   	end
@@ -33,13 +36,22 @@ class ReviewsController < ApplicationController
 
   def destroy
   	  @review.destroy
-      redirect_to reviews_url
+      redirect_to @product
   end
 
   private
+
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
+
     def set_review
-    	@review = Review.find(params[:index])
-  end
+    	@review = Review.find(params[:id])
+    end
+
+    def review_params
+      params.require(:review).permit(:title, :description)   
+    end
 
 
 end

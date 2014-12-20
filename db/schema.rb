@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141220192510) do
+ActiveRecord::Schema.define(version: 20141220200213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,17 @@ ActiveRecord::Schema.define(version: 20141220192510) do
 
   create_table "reviews", force: true do |t|
     t.string   "title"
-    t.text     "desription"
+    t.text     "description"
     t.string   "product"
     t.string   "user"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "product_id"
   end
+
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "scores", force: true do |t|
     t.integer  "user_score"

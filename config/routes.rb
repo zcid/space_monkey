@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {registrations: 'registrations' }
   root 'products#index'
 
-  resources :products
-  resources :reviews
+  resources :products do
+    resources :reviews 
+    resources :users
+  end
 
   get '/profile', to: 'users#profile', as: :profile
 

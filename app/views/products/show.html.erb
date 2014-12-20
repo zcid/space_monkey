@@ -1,7 +1,19 @@
-show
+<h1><%= @product.name %></h1>
+<p><%= @product.description %></p>
 
+<p><%= link_to 'back', products_path %></p>
 
-<ol><li><%= @product.name %></li>
-<%= @product.description %></ol>
+<h2>Reviews</h2>
+<% @product.reviews.each do |review| %>
+  <h3>Title</h3>
+  <%= review.title %>
+  <h3>Description</h3>
+  <%= review.description %>
+  <% if user_signed_in? %>
+    <p><%= link_to 'edit', edit_product_review_path(@product, review) %></p>
+    <p><%= link_to 'Delete', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' }%></p>
+  <% end %>
+<% end %>
 
-<%= link_to 'back', products_path %>
+<p><%= link_to 'new review', new_product_review_path(@product)%></p>
+

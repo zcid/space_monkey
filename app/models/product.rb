@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  has_many :reviews
   has_many :scores
 
   def get_score(product)
@@ -8,5 +9,4 @@ class Product < ActiveRecord::Base
     end 
     return x
   end
-
 end
