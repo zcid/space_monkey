@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20141220200213) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "users_id"
   end
+
+  add_index "products", ["users_id"], name: "index_products_on_users_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.string   "title"
@@ -36,6 +39,17 @@ ActiveRecord::Schema.define(version: 20141220200213) do
 
   add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "scores", force: true do |t|
+    t.integer  "user_score"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scores", ["product_id"], name: "index_scores_on_product_id", using: :btree
+  add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

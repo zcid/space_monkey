@@ -36,6 +36,13 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to products_path
   end
+  def get_score(product)
+    x = 0
+    product.scores.each do |score|
+      x += score.user_score
+    end
+    return x
+  end
 
   private 
     def set_product
@@ -46,4 +53,11 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:name, :description)
     end
 
+    def get_score(product)
+      x = 0
+      product.scores.each do |score|
+        x += score.user_score
+      end
+      return x
+    end
 end

@@ -16,3 +16,41 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+
+.centered_div {
+	margin: 0 auto;
+	display: table;
+}
+
+.product_container_padding {
+	padding: 20px 0;
+	border: solid;
+}
+
+.description_padding {
+	padding: 0 43px;
+}
+
+.fill {
+	width: 100%
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.border_pager {
+	border: solid;
+	border-radius: 8px;
+	box-shadow: 6px 6px 3px #888888;
+	padding: 30px;
+}
