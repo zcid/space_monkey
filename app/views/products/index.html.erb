@@ -10,6 +10,8 @@
   <div class="container-fluid">
     <div><% @products.each do |product| %>
       <div class="pager border_pager">
+        <div> Name: <%= product.name %> </div>
+          <div class="description_padding">Description: <%= product.description %></div>
         <div><%= link_to '#', class: "btn btn-default" do %>
           <i class="glyphicon glyphicon-thumbs-up"></i>
         <% end %>
@@ -23,12 +25,12 @@
                   <%= link_to vote_up_path(product: product), class: "btn btn-default" do %>
                     <i class="glyphicon glyphicon-thumbs-up"></i>
                   <% end %>
+                  <%= get_score(product) %>
                   <%= link_to vote_down_path(product: product), class: "btn btn-default" do %>
                     <i class="glyphicon glyphicon-thumbs-down"></i>
                   <% end %>
         </div>
         <div>
-          <div class="description_padding">Description: <%= product.description %></div>
       </div>
         </div>
       <% end %>
