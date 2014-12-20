@@ -1,8 +1,8 @@
 class CreateScores < ActiveRecord::Migration
   def change
     create_table :scores do |t|
-      add_reference :products, :users, index: true
-      t.integer :score
+      t.integer :user_score
+      t.references :user, :product, index: true
 
       t.timestamps
     end

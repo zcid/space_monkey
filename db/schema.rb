@@ -36,10 +36,15 @@ ActiveRecord::Schema.define(version: 20141220192510) do
   end
 
   create_table "scores", force: true do |t|
-    t.integer  "score"
+    t.integer  "user_score"
+    t.integer  "user_id"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "scores", ["product_id"], name: "index_scores_on_product_id", using: :btree
+  add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
