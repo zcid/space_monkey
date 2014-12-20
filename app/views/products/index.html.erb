@@ -1,0 +1,8 @@
+<h1>Index of Products</h1>
+<p>Space Monkey demands you add a new product <%= link_to 'here', new_product_path %></p>
+<ol>
+<% @products.each do |product| %>
+	<li>Name: <%= product.name %>  <%= link_to 'view', product_path(product) %>  <%= link_to 'edit', edit_product_path(product) %> <%= link_to 'delete', product_path(product), method: :delete %></li><ul>
+	<li>Description: <%= product.description %></li></ul>
+<% end %>
+</ol>
