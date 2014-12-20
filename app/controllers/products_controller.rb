@@ -75,10 +75,12 @@ class ProductsController < ApplicationController
     end
 
     def never_voted?(product)
-      if Score.where(user_id: current_user.id, product_id: product).count == 0
-        true
-      else
-        false
+      if current_user
+        if Score.where(user_id: current_user.id, product_id: product).count == 0
+          true
+        else
+          false
+        end
       end
     end
 end
